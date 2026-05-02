@@ -2,18 +2,13 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: ubuntu-latest
 
 steps:
-- script: echo "Pipeline is running successfully!"
-  displayName: 'Test Run'
+- script: echo "✅ Pipeline working"
+  displayName: 'Test Pipeline'
 
-- task: CopyFiles@2
-  inputs:
-    contents: '**'
-    targetFolder: '$(Build.ArtifactStagingDirectory)'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: 'drop'
+- script: |
+    echo "Listing files"
+    ls -la
+  displayName: 'Check Files'
